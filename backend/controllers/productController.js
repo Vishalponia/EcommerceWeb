@@ -77,21 +77,98 @@ const addProduct = async (req, res) => {
 };
 
 
-
-
 const getProducts = async (req, res) => {
   try {
 
-    const products = await Product.find()
-      .populate("category", "name")
-      .sort({ createdAt: -1 });
+    const { search } = req.query;
+
+    let products;
+
+    // ==========================================
+    // NO SEARCH → GET ALL PRODUCTS
+    // ==========================================
+
+    if (!search || search.trim() === "") {
+
+      products = await Product.find({
+        status: "Active",
+      })
+        .populate("category", "name")
+        .sort({ createdAt: -1 });
+
+    }
+
+    // ==========================================
+    // SEARCH PRODUCTS
+    // ==========================================
+
+    else {
+
+      const searchText = search.trim();
+
+      // First find matching categories
+      const categories = await Category.find({
+        name: {
+          $regex: searchText,
+          $options: "i",
+        },
+      }).select("_id");
+
+      const categoryIds = categories.map(
+        (category) => category._id
+      );
+
+      // Search products
+      products = await Product.find({
+
+        status: "Active",
+
+        $or: [
+
+          // Product Name
+          {
+            name: {
+              $regex: searchText,
+              $options: "i",
+            },
+          },
+
+          // Product Description
+          {
+            description: {
+              $regex: searchText,
+              $options: "i",
+            },
+          },
+
+          // Category
+          {
+            category: {
+              $in: categoryIds,
+            },
+          },
+
+        ],
+
+      })
+        .populate("category", "name")
+        .sort({ createdAt: -1 });
+
+    }
+
+    // ==========================================
+    // RESPONSE
+    // ==========================================
 
     res.status(200).json({
       success: true,
+      count: products.length,
       products,
     });
 
   } catch (error) {
+
+    console.log("SEARCH PRODUCTS ERROR:", error);
 
     res.status(500).json({
       success: false,
@@ -100,8 +177,6 @@ const getProducts = async (req, res) => {
 
   }
 };
-
-
 
 const getProductsByCategory = async (req, res) => {
 

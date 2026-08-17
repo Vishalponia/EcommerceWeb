@@ -2,9 +2,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-const navigate = useNavigate();
+
 
 const handleLogout = async () => {
+  const { clearCart } = useCart();
+  const navigate = useNavigate();
   try {
     const res = await axios.post(
       "http://localhost:5000/api/auth/logout",
@@ -15,6 +17,7 @@ const handleLogout = async () => {
     );
 
     toast.success(res.data.message);
+    clearCart();
 
     localStorage.removeItem("user");
 

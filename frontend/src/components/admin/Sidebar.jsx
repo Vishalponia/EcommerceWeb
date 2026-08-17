@@ -68,7 +68,7 @@ const navigate = useNavigate();
 
         <NavLink
           to="/admin/add-category"
-          className="flex items-center gap-3 px-6 py-4 hover:bg-slate-800"
+          className="flex items-center gap-3 px-6 py-4 rounded-lg hover:bg-green-500"
         >
           <FaPlus />
           Add Category
@@ -76,7 +76,7 @@ const navigate = useNavigate();
 
         <NavLink
           to="/admin/categories"
-          className="flex items-center gap-3 px-6 py-4 hover:bg-slate-800"
+          className="flex items-center gap-3 px-6 py-4 rounded-lg hover:bg-green-500"
         >
           <FaList />
           Categories
@@ -84,7 +84,7 @@ const navigate = useNavigate();
 
         <NavLink
           to="/admin/add-product"
-          className="flex items-center gap-3 px-6 py-4 hover:bg-slate-800"
+          className="flex items-center gap-3 px-6 py-4 rounded-lg hover:bg-green-500"
         >
           <FaBox />
           Add Product
@@ -92,30 +92,45 @@ const navigate = useNavigate();
 
         <NavLink
           to="/admin/products"
-          className="flex items-center gap-3 px-6 py-4 hover:bg-slate-800"
+          className="flex items-center gap-3 px-6 py-4 rounded-lg hover:bg-green-500"
         >
           <FaBox />
           Products
         </NavLink>
 
-        <NavLink
+        {/* <NavLink
           to="/admin/orders"
           className="flex items-center gap-3 px-6 py-4 hover:bg-slate-800"
         >
           <FaShoppingCart />
           Orders
-        </NavLink>
+        </NavLink> */}
+
+
+        <NavLink
+  to="/admin/orders"
+  className={({ isActive }) =>
+    `flex items-center gap-3 px-4 py-3 rounded-lg transition ${
+      isActive
+        ? "bg-blue-600 text-white"
+        : "hover:bg-green-500"
+    }`
+  }
+>
+  <FaShoppingCart />
+  Orders
+</NavLink>
 
         <NavLink
           to="/admin/users"
-          className="flex items-center gap-3 px-6 py-4 hover:bg-slate-800"
+          className="flex items-center gap-3 px-6 py-4 rounded-lg hover:bg-green-500"
         >
           <FaUsers />
           Users
         </NavLink>
 
         <button onClick={handleLogout}
-        className="flex items-center gap-3 px-6 py-4 hover:bg-red-600 mt-auto">
+        className="flex items-center gap-3 px-6 py-4 rounded-lg hover:bg-red-600 mt-auto">
         
           <FaSignOutAlt />
           Logout

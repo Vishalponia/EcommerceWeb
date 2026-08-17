@@ -25,6 +25,8 @@ const addCategory = async (req, res) => {
             slug: slugify(name),
 
             description,
+            createdBy: req.user._id,
+            updatedBy: req.user._id,
 
             status,
 
@@ -66,7 +68,10 @@ const addCategory = async (req, res) => {
 const getCategories = async (req, res) => {
   try {
 
-    const categories = await Category.find().sort({ createdAt: -1 });
+    const categories = await Category.find()
+      .populate("createdBy", "name email")
+      .populate("updatedBy", "name email")
+      .sort({ createdAt: -1 });
 
     res.status(200).json({
       success: true,
@@ -74,6 +79,8 @@ const getCategories = async (req, res) => {
     });
 
   } catch (error) {
+
+    console.log("Get Categories Error:", error);
 
     res.status(500).json({
       success: false,
@@ -106,6 +113,7 @@ const updateCategory = async (req, res) => {
     category.name = name;
     category.slug = slugify(name);
     category.description = description;
+    category.updatedBy = req.user._id;
     category.status = status;
 
     // If a new image is uploaded

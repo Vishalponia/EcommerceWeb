@@ -5,7 +5,7 @@ const router = express.Router();
 const verifyToken = require("../middleware/authMiddleware");
 const adminMiddleware = require("../middleware/adminMiddleware");
 
-const { getUsers,deleteUser } = require("../controllers/userController");
+const { getUsers,deleteUser,getAddress,saveAddress } = require("../controllers/userController");
 
 router.get(
   "/",
@@ -21,5 +21,17 @@ router.delete(
   deleteUser
 );
 
+
+router.get(
+  "/address",
+  verifyToken,
+  getAddress
+);
+
+router.put(
+  "/address",
+  verifyToken,
+  saveAddress
+);
 
 module.exports = router;

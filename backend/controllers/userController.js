@@ -51,7 +51,85 @@ const deleteUser = async (req, res) => {
 };
 
 
+//address save karne ke liye
+const saveAddress = async (req, res) => {
+
+  try {
+
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+
+    }
+
+    user.address = req.body;
+
+    await user.save();
+
+    res.status(200).json({
+
+      success: true,
+
+      message: "Address Saved",
+
+      address: user.address,
+
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+
+      message: error.message,
+
+    });
+
+  }
+
+};
+
+
+//Address fetch karne ke liye
+
+const getAddress = async (req, res) => {
+
+  try {
+
+    const user = await User.findById(req.user._id);
+
+    res.status(200).json({
+
+      success: true,
+
+      address: user.address,
+
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+
+      message: error.message,
+
+    });
+
+  }
+
+};
+
+
 module.exports = {
   getUsers,
   deleteUser,
+  saveAddress,
+  getAddress,
 };

@@ -15,13 +15,33 @@ import ProductList from "./pages/admin/ProductList";
 import CategoryProducts from "./pages/CategoryProducts";
 import EditProduct from "./pages/admin/EditProduct";
 import UserList from "./pages/admin/UserList";
+import ProductDetail from "./pages/ProductDetail.jsx";
+import Cart from "./pages/Cart.jsx";
+import { CartProvider } from "./context/CartContext.jsx";
+import Checkout from "./pages/Checkout.jsx";
+import MyOrders from "./pages/MyOrders";
+import AdminOrderList from "./pages/admin/AdminOrderList";
+import CategoriesPage from "./pages/CategoriesPage.jsx";
+import About from "./pages/About.jsx";
+import Footer from "./components/Footer.jsx";
+import Contact from "./pages/Contact.jsx";
+import SellerDashboard from "./pages/SellerDashboard";
+import SellerAddProduct from "./pages/SellerAddProduct";
+import SellerProductList from "./pages/SellerProductList";
+import SellerEditProduct from "./pages/SellerEditProduct";
+import Shop from "./pages/Shop";
+import TestPayment from "./pages/TestPayment"
 
+
+
+import AIChatTest from "./components/AIChatTest";
 function App() {
   return (
+    <CartProvider>
     <BrowserRouter>
       <Navbar />
   
-
+     <AIChatTest/>
       <Routes>
         <Route path="/" element={<Home/>}/>
         {/* <Route path="/login" element={<h1 className="text-4xl p-10">Login</h1>} />
@@ -38,13 +58,39 @@ function App() {
        <Route path="/category/:categoryId" element={<CategoryProducts />}/>
        <Route path="/admin/edit-product/:id" element={<AdminRoute> <EditProduct /> </AdminRoute> }/>
        <Route path="/admin/users" element={<AdminRoute><UserList /></AdminRoute>}/>
+       <Route path="/product/:id" element={<ProductDetail />}/>
+       <Route path="/cart"  element={<ProtectedRoute><Cart /></ProtectedRoute>}/>
+       <Route path="/checkout" element={ <ProtectedRoute><Checkout/></ProtectedRoute> }/>
+       <Route path="/my-orders" element={<ProtectedRoute><MyOrders /></ProtectedRoute> }/>
+        <Route path="/admin/orders" element={<AdminRoute><AdminOrderList /></AdminRoute> }/>
+        <Route path="/seller/dashboard" element={<SellerDashboard /> }/>
+        <Route path="/seller/add-product" element={<SellerAddProduct /> }/>
+        <Route path="/seller/products" element={<SellerProductList /> }/>
+        <Route path="/seller/edit-product/:id" element={<SellerEditProduct /> }/>
+        
+
+       <Route path="/categories" element={<CategoriesPage />} />
+       <Route path="/about" element={<About />} />
+       <Route path="/contact" element={<Contact />} />
+       <Route path="/shop" element={<Shop />} />
+       <Route
+  path="/test-payment"
+  element={<TestPayment />}
+/>
+
+
+
+
+<Route path="/ai-test" element={<AIChatTest />} />
        
        
        
         
 
       </Routes>
+      
     </BrowserRouter>
+    </CartProvider>
   );
 }
 

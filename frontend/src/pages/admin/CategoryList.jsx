@@ -120,8 +120,11 @@ const CategoryList = () => {
                   <th>Description</th>
 
                   <th>Status</th>
+                   <th> Created by</th>
+                  <th> Updated by</th>
 
                   <th>Actions</th>
+                 
 
                 </tr>
 
@@ -167,6 +170,13 @@ const CategoryList = () => {
                       </span>
 
                     </td>
+                    <td className="px-4 py-3">
+  {category.createdBy?.name || "-"}
+</td>
+
+<td className="px-4 py-3">
+  {category.updatedBy?.name || "-"}
+</td>
 
                     <td>
 

@@ -56,8 +56,8 @@ const CategorySection = () => {
       <div className="p-5 text-center">
         <h3 className="text-xl font-bold">{category.name}</h3>
 
-        <p className="text-gray-500 mt-2">
-          Explore our latest collection
+        <p className="text-gray-800 mt-2">
+         {category.description.length > 100 ? category.description.substring(0, 100) + "..." : category.description}
         </p>
 
         <Link

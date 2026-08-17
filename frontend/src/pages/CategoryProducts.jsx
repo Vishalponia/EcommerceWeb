@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const CategoryProducts = () => {
   const { categoryId } = useParams();
@@ -42,7 +43,7 @@ const CategoryProducts = () => {
             <img
               src={`http://localhost:5000/uploads/product-images/${product.images[0]}`}
               alt={product.name}
-              className="w-full h-60 object-cover rounded-t-xl"
+              className="w-full h-60 object-fit rounded-t-xl"
             />
 
             <div className="p-4">
@@ -58,10 +59,16 @@ const CategoryProducts = () => {
               <p className="text-blue-600 font-bold text-2xl mt-3">
                 ₹ {product.price}
               </p>
-
+{/* 
               <button className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg">
                 View Details
-              </button>
+              </button> */}
+              <Link
+  to={`/product/${product._id}`}
+  className="block w-full mt-4 bg-blue-600 text-white py-2 rounded-lg text-center hover:bg-blue-700 transition"
+>
+  View Details
+</Link>
 
             </div>
 

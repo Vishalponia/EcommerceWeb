@@ -1,15 +1,33 @@
+
+
+
+
+
 import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const [accountType, setAccountType] = useState("user");
+
+  const [loading, setLoading] = useState(false);
+  const {
+  loginUser,
+  loginSeller
+} = useAuth();
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  // ==========================================
+  // HANDLE INPUT
+  // ==========================================
 
   const handleChange = (e) => {
     setFormData({
@@ -18,98 +36,241 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  // ==========================================
+  // HANDLE LOGIN
+  // ==========================================
+
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        formData,
-        {
-          withCredentials: true,
+      setLoading(true);
+
+      // ======================================
+      // USER LOGIN
+      // ======================================
+
+      if (accountType === "user") {
+        const res = await axios.post(
+          "http://localhost:5000/api/auth/login",
+          {
+            email: formData.email,
+            password: formData.password,
+          },
+          {
+            withCredentials: true,
+          }
+        );
+
+        toast.success(
+          res.data.message || "Login successful"
+        );
+
+        // Existing user data
+        if (res.data.user) {
+          // localStorage.setItem(
+          //   "user",
+          //   JSON.stringify(res.data.user)
+          // );
+          //   localStorage.removeItem("seller");
+          loginUser(res.data.user);
         }
-      );
 
-      toast.success(res.data.message);
-
-      // Save user data if needed
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-
-      //navigate("/");
-
-      if (res.data.user.role === "admin") {
-           navigate("/admin");
-      } else {
-           navigate("/");
+        navigate("/");
       }
-      
-window.location.reload();
+
+      // ======================================
+      // SELLER LOGIN
+      // ======================================
+
+      else {
+        const res = await axios.post(
+          "http://localhost:5000/api/seller/login",
+          {
+            email: formData.email,
+            password: formData.password,
+          },
+          {
+            withCredentials: true,
+          }
+        );
+
+        toast.success(
+          res.data.message || "Seller login successful"
+        );
+
+        // Store seller data
+        if (res.data.seller) {
+        //   localStorage.setItem(
+        //     "seller",
+        //     JSON.stringify(res.data.seller)
+        //   );
+
+        //  localStorage.removeItem("user");
+         loginSeller(res.data.seller);
+        }
+
+         navigate("/seller/dashboard");
+        
+      }
     } catch (error) {
-  console.log(error.response);
-  alert(error.response?.data?.message || "Something went wrong");
-}
+      console.log(error);
+
+      toast.error(
+        error.response?.data?.message ||
+          "Login failed"
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-5 py-10">
 
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
 
-        <h2 className="text-3xl font-bold text-center text-blue-600 mb-6">
-          Login
-        </h2>
+        {/* ================================= */}
+        {/* TITLE */}
+        {/* ================================= */}
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <h1 className="text-3xl font-bold text-center">
+          Welcome Back
+        </h1>
 
-          <div>
-            <label className="block mb-2 font-medium">
+        <p className="text-gray-500 text-center mt-2">
+          Login to your account
+        </p>
+
+
+        {/* ================================= */}
+        {/* ACCOUNT TYPE */}
+        {/* ================================= */}
+
+        <div className="grid grid-cols-2 gap-3 mt-8">
+
+          {/* USER */}
+
+          <button
+            type="button"
+            onClick={() => setAccountType("user")}
+            className={`py-3 rounded-lg font-semibold transition ${
+              accountType === "user"
+                ? "bg-blue-600 text-white"
+                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+            }`}
+          >
+            👤 User
+          </button>
+
+
+          {/* SELLER */}
+
+          <button
+            type="button"
+            onClick={() => setAccountType("seller")}
+            className={`py-3 rounded-lg font-semibold transition ${
+              accountType === "seller"
+                ? "bg-blue-600 text-white"
+                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+            }`}
+          >
+            🏪 Seller
+          </button>
+
+        </div>
+
+
+        {/* ================================= */}
+        {/* LOGIN FORM */}
+        {/* ================================= */}
+
+        <form
+          onSubmit={handleLogin}
+          className="mt-8"
+        >
+
+          {/* EMAIL */}
+
+          <div className="mb-5">
+
+            <label className="block font-semibold mb-2">
               Email
             </label>
 
             <input
               type="email"
               name="email"
-              placeholder="Enter Email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full border p-3 rounded-lg outline-none focus:border-blue-600"
+              placeholder="Enter your email"
               required
+              className="w-full border border-gray-300 px-4 py-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
             />
+
           </div>
 
-          <div>
-            <label className="block mb-2 font-medium">
+
+          {/* PASSWORD */}
+
+          <div className="mb-6">
+
+            <label className="block font-semibold mb-2">
               Password
             </label>
 
             <input
               type="password"
               name="password"
-              placeholder="Enter Password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full border p-3 rounded-lg outline-none focus:border-blue-600"
+              placeholder="Enter your password"
               required
+              className="w-full border border-gray-300 px-4 py-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
             />
+
           </div>
+
+
+          {/* LOGIN BUTTON */}
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+            disabled={loading}
+            className={`w-full py-3 rounded-lg text-white font-semibold transition ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700"
+            }`}
           >
-            Login
+
+            {loading
+              ? "Logging in..."
+              : accountType === "seller"
+              ? "Login as Seller"
+              : "Login as User"}
+
           </button>
 
         </form>
 
-        <p className="text-center mt-5">
-          Don't have an account?{" "}
-          <Link
-            to="/signup"
-            className="text-blue-600 font-semibold"
+
+        {/* ================================= */}
+        {/* SIGNUP */}
+        {/* ================================= */}
+
+        <p className="text-center text-gray-600 mt-6">
+
+          Don't have an account?
+
+          <button
+            type="button"
+            onClick={() => navigate("/signup")}
+            className="text-blue-600 font-semibold ml-2 hover:underline"
           >
-            Signup
-          </Link>
+            Sign Up
+          </button>
+
         </p>
 
       </div>

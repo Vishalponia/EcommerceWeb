@@ -1,6 +1,8 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
-const sendWelcomeEmail = require("../utils/sendEmail");
+const {
+  sendWelcomeEmail,
+} = require("../utils/sendEmail");
 const jwt = require("jsonwebtoken");
 
 
@@ -38,7 +40,7 @@ const signup = async (req, res) => {
       password: hashedPassword,
     });
     
-    await sendWelcomeEmail(name, email);
+     sendWelcomeEmail(name, email);
 
     res.status(201).json({
       success: true,

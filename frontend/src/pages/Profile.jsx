@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 
 
@@ -97,6 +99,14 @@ const navigate = useNavigate();
 
         <div className="flex flex-col items-center">
 
+          <Link
+                  to="/"
+                  className="inline-flex items-center gap-2 text-blue-600 font-semibold mb-8"
+                >
+                  <FaArrowLeft />
+                  Back
+                </Link>
+
         <div className="w-28 h-28 rounded-full bg-blue-600 flex items-center justify-center text-white text-5xl font-bold shadow-lg">
   {user.name.charAt(0).toUpperCase()}
 </div>
@@ -113,13 +123,18 @@ const navigate = useNavigate();
 
         <div className="mt-8 space-y-4">
 
-          <button className="w-full bg-blue-600 text-white py-3 rounded-lg">
+          {/* <button className="w-full bg-blue-600 text-white py-3 rounded-lg">
             My Orders
-          </button>
+          </button> */}
 
-          <button className="w-full bg-green-600 text-white py-3 rounded-lg">
-            Wishlist
-          </button>
+
+          <button onClick={() => navigate("/my-orders")}
+           className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
+>
+  My Orders
+</button>
+
+          
 
           <button className="w-full bg-orange-500 text-white py-3 rounded-lg">
             Addresses

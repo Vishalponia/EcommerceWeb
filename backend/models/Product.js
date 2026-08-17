@@ -42,6 +42,18 @@ const productSchema = new mongoose.Schema(
       },
     ],
 
+    seller: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "Seller",
+  required: true,
+},
+
+stock: {
+  type: Number,
+  required: true,
+  default: 0,
+},
+
     status: {
       type: String,
       enum: ["Active", "Inactive"],
