@@ -10,6 +10,7 @@ const app = express();
 app.use(
   cors({
     origin: "http://localhost:5173",
+    "https://ecommerce-web-liard-chi.vercel.app/",
     credentials: true,
   })
 );
