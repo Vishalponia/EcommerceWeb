@@ -65,7 +65,7 @@ const AIChatbot = () => {
     try {
 
       const res = await axios.post(
-        "http://localhost:5000/api/chat",
+        "https://ecommerceweb-xxb1.onrender.com/api/chat",
         {
           message: text,
         }

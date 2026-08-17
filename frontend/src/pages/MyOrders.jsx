@@ -13,7 +13,7 @@ const MyOrders = () => {
   const fetchOrders = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/orders/my-orders",
+        "https://ecommerceweb-xxb1.onrender.com/api/orders/my-orders",
         {
           withCredentials: true,
         }
@@ -130,7 +130,7 @@ const MyOrders = () => {
                 >
 
                   <img
-                    src={`http://localhost:5000/uploads/product-images/${item.product.images[0]}`}
+                    src={`https://ecommerceweb-xxb1.onrender.com/uploads/product-images/${item.product.images[0]}`}
                     alt={item.product.name}
                     className="w-24 h-24 object-cover rounded-lg"
                   />

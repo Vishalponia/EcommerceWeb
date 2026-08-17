@@ -29,7 +29,7 @@ const Checkout = () => {
   const fetchCart = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/cart",
+        "https://ecommerceweb-xxb1.onrender.com/api/cart",
         {
           withCredentials: true,
         }
@@ -85,7 +85,7 @@ const Checkout = () => {
   try {
 
     const res = await axios.post(
-      "http://localhost:5000/api/orders",
+      "https://ecommerceweb-xxb1.onrender.com/api/orders",
       {
         ...formData,
         paymentMethod: "COD",
@@ -129,7 +129,7 @@ const fetchAddress = async () => {
 
         const res = await axios.get(
 
-            "http://localhost:5000/api/users/address",
+            "https://ecommerceweb-xxb1.onrender.com/api/users/address",
 
             {
 
@@ -209,7 +209,7 @@ const saveAddress = async () => {
   try {
 
     await axios.put(
-      "http://localhost:5000/api/users/address",
+      "https://ecommerceweb-xxb1.onrender.com/api/users/address",
       {
         fullName: formData.fullName,
         phone: formData.phone,
@@ -250,7 +250,7 @@ const handlePayment = async () => {
   try {
     // Create Razorpay order using actual cart total
     const res = await axios.post(
-      "http://localhost:5000/api/payment/create-order",
+      "https://ecommerceweb-xxb1.onrender.com/api/payment/create-order",
       {
         amount: total,
       },
@@ -275,7 +275,7 @@ const handlePayment = async () => {
       handler: async function (response) {
         try {
           const verifyRes = await axios.post(
-            "http://localhost:5000/api/payment/verify",
+            "https://ecommerceweb-xxb1.onrender.com/api/payment/verify",
             {
               razorpay_order_id:
                 response.razorpay_order_id,
@@ -298,7 +298,7 @@ const handlePayment = async () => {
 
             // Now create actual order
             await axios.post(
-              "http://localhost:5000/api/orders",
+              "https://ecommerceweb-xxb1.onrender.com/api/orders",
               {
                 ...formData,
                 paymentMethod: "Razorpay",

@@ -24,7 +24,7 @@
 
 //     try {
 //       const res = await axios.post(
-//         "http://localhost:5000/api/auth/signup",
+//         "https://ecommerceweb-xxb1.onrender.com/api/auth/signup",
 //         formData
 //       );
 
@@ -173,7 +173,7 @@ const Signup = () => {
       if (accountType === "user") {
 
         const res = await axios.post(
-          "http://localhost:5000/api/auth/signup",
+          "https://ecommerceweb-xxb1.onrender.com/api/auth/signup",
           {
             name: formData.name,
             email: formData.email,
@@ -201,7 +201,7 @@ const Signup = () => {
       else {
 
         const res = await axios.post(
-          "http://localhost:5000/api/seller/signup",
+          "https://ecommerceweb-xxb1.onrender.com/api/seller/signup",
           {
             name: formData.name,
             email: formData.email,

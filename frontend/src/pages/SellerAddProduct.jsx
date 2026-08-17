@@ -38,7 +38,7 @@ const SellerAddProduct = () => {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/categories"
+        "https://ecommerceweb-xxb1.onrender.com/api/categories"
       );
 
       setCategories(res.data.categories);
@@ -121,7 +121,7 @@ const SellerAddProduct = () => {
 
       const res = await axios.post(
 
-        "http://localhost:5000/api/seller/products",
+        "https://ecommerceweb-xxb1.onrender.com/api/seller/products",
 
         data,
 

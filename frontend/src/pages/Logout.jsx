@@ -9,7 +9,7 @@ const handleLogout = async () => {
   const navigate = useNavigate();
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/auth/logout",
+      "https://ecommerceweb-xxb1.onrender.com/api/auth/logout",
       {},
       {
         withCredentials: true,

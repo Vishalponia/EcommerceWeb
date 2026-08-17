@@ -27,8 +27,8 @@ export default function EditProduct() {
     (async () => {
       try {
         const [pr, cr] = await Promise.all([
-          axios.get(`http://localhost:5000/api/products/${id}`),
-          axios.get("http://localhost:5000/api/categories"),
+          axios.get(`https://ecommerceweb-xxb1.onrender.com/api/products/${id}`),
+          axios.get("https://ecommerceweb-xxb1.onrender.com/api/categories"),
         ]);
 
         const p = pr.data.product;
@@ -70,7 +70,7 @@ export default function EditProduct() {
       }
 
       await axios.put(
-        `http://localhost:5000/api/products/${id}`,
+        `https://ecommerceweb-xxb1.onrender.com/api/products/${id}`,
         fd,
         {
           withCredentials: true,
@@ -161,7 +161,7 @@ export default function EditProduct() {
             {oldImages.map((img, i) => (
               <img
                 key={i}
-                src={`http://localhost:5000/uploads/product-images/${img}`}
+                src={`https://ecommerceweb-xxb1.onrender.com/uploads/product-images/${img}`}
                 className="w-24 h-24 object-cover rounded"
               />
             ))}

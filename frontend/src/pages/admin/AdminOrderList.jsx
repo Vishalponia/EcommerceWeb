@@ -13,7 +13,7 @@ const AdminOrderList = () => {
   const fetchOrders = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/orders",
+        "https://ecommerceweb-xxb1.onrender.com/api/orders",
         {
           withCredentials: true,
         }
@@ -31,7 +31,7 @@ const AdminOrderList = () => {
   const updateOrderStatus = async (id, status) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/orders/${id}`,
+        `https://ecommerceweb-xxb1.onrender.com/api/orders/${id}`,
         {
           orderStatus: status,
         },
@@ -147,7 +147,7 @@ const AdminOrderList = () => {
                         >
 
                           <img
-                            src={`http://localhost:5000/uploads/product-images/${item.product.images[0]}`}
+                            src={`https://ecommerceweb-xxb1.onrender.com/uploads/product-images/${item.product.images[0]}`}
                             alt={item.product.name}
                             className="w-14 h-14 rounded-lg object-cover"
                           />

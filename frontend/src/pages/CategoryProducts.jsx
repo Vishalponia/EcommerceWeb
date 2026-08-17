@@ -15,7 +15,7 @@ const CategoryProducts = () => {
   const fetchProducts = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/products/category/${categoryId}`
+        `https://ecommerceweb-xxb1.onrender.com/api/products/category/${categoryId}`
       );
 
       setProducts(res.data.products);
@@ -41,7 +41,7 @@ const CategoryProducts = () => {
           >
 
             <img
-              src={`http://localhost:5000/uploads/product-images/${product.images[0]}`}
+              src={`https://ecommerceweb-xxb1.onrender.com/uploads/product-images/${product.images[0]}`}
               alt={product.name}
               className="w-full h-60 object-fit rounded-t-xl"
             />

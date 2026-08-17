@@ -34,7 +34,7 @@ const AddCategory = () => {
       formData.append("image", image);
 
       const res = await axios.post(
-        "http://localhost:5000/api/categories",
+        "https://ecommerceweb-xxb1.onrender.com/api/categories",
         formData,
         {
           withCredentials: true,

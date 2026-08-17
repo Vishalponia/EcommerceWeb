@@ -20,7 +20,7 @@ export const CartProvider = ({ children }) => {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:5000/api/cart",
+        "https://ecommerceweb-xxb1.onrender.com/api/cart",
         {
           withCredentials: true,
         }

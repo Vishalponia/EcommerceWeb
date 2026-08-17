@@ -19,7 +19,7 @@ useEffect(() => {
 const fetchStats = async () => {
   try {
     const res = await axios.get(
-      "http://localhost:5000/api/dashboard/stats",
+      "https://ecommerceweb-xxb1.onrender.com/api/dashboard/stats",
       {
         withCredentials: true,
       }

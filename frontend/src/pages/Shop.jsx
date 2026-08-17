@@ -22,10 +22,10 @@
 //   try {
 //     setLoading(true);
 
-//     let url = "http://localhost:5000/api/products";
+//     let url = "https://ecommerceweb-xxb1.onrender.com/api/products";
 
 //     if (searchText.trim()) {
-//       url = `http://localhost:5000/api/products/search?search=${encodeURIComponent(
+//       url = `https://ecommerceweb-xxb1.onrender.com/api/products/search?search=${encodeURIComponent(
 //         searchText
 //       )}`;
 //     }
@@ -177,7 +177,7 @@
 //                     {product.images?.length > 0 ? (
 
 //                       <img
-//                         src={`http://localhost:5000/uploads/product-images/${product.images[0]}`}
+//                         src={`https://ecommerceweb-xxb1.onrender.com/uploads/product-images/${product.images[0]}`}
 //                         alt={product.name}
 //                         className="w-full h-full object-cover hover:scale-105 transition duration-300"
 //                       />
@@ -304,7 +304,7 @@ const Shop = () => {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:5000/api/products"
+        "https://ecommerceweb-xxb1.onrender.com/api/products"
       );
 
       console.log("ALL PRODUCTS:", res.data);
@@ -491,7 +491,7 @@ const Shop = () => {
                     {product.images?.length > 0 ? (
 
                       <img
-                        src={`http://localhost:5000/uploads/product-images/${product.images[0]}`}
+                        src={`https://ecommerceweb-xxb1.onrender.com/uploads/product-images/${product.images[0]}`}
                         alt={product.name}
                         className="w-full h-full object-fit hover:scale-105 transition duration-300"
                       />

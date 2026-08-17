@@ -18,7 +18,7 @@ const SellerDashboard = () => {
   const fetchSellerProfile = async () => {
   try {
     const res = await axios.get(
-      "http://localhost:5000/api/seller/profile",
+      "https://ecommerceweb-xxb1.onrender.com/api/seller/profile",
       {
         withCredentials: true,
       }
@@ -56,7 +56,7 @@ const SellerDashboard = () => {
   try {
 
     const res = await axios.get(
-      "http://localhost:5000/api/seller/products",
+      "https://ecommerceweb-xxb1.onrender.com/api/seller/products",
       {
         withCredentials: true,
       }
@@ -131,7 +131,7 @@ const SellerDashboard = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/seller/logout",
+        "https://ecommerceweb-xxb1.onrender.com/api/seller/logout",
         {},
         {
           withCredentials: true,

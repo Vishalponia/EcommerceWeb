@@ -16,7 +16,7 @@ const UserList = () => {
   const fetchUsers = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/users",
+        "https://ecommerceweb-xxb1.onrender.com/api/users",
         {
           withCredentials: true,
         }
@@ -80,7 +80,7 @@ const UserList = () => {
 
   try {
     const res = await axios.delete(
-      `http://localhost:5000/api/users/${id}`,
+      `https://ecommerceweb-xxb1.onrender.com/api/users/${id}`,
       {
         withCredentials: true,
       }

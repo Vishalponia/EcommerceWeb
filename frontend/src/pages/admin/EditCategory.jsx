@@ -21,7 +21,7 @@ const EditCategory = () => {
   const getCategory = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/categories/${id}`
+        `https://ecommerceweb-xxb1.onrender.com/api/categories/${id}`
       );
 
       const category = res.data.category;
@@ -55,7 +55,7 @@ const EditCategory = () => {
       }
 
       const res = await axios.put(
-        `http://localhost:5000/api/categories/${id}`,
+        `https://ecommerceweb-xxb1.onrender.com/api/categories/${id}`,
         formData,
         {
           withCredentials: true,
@@ -122,7 +122,7 @@ const EditCategory = () => {
             </label>
 
             <img
-              src={`http://localhost:5000/uploads/category-images/${oldImage}`}
+              src={`https://ecommerceweb-xxb1.onrender.com/uploads/category-images/${oldImage}`}
               alt=""
               className="w-40 h-40 rounded-lg object-cover mt-3"
             />

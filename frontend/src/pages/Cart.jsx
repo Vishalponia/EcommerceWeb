@@ -15,7 +15,7 @@
 //   const fetchCart = async () => {
 //     try {
 //       const res = await axios.get(
-//         "http://localhost:5000/api/cart",
+//         "https://ecommerceweb-xxb1.onrender.com/api/cart",
 //         {
 //           withCredentials: true,
 //         }
@@ -36,7 +36,7 @@
 
 //     await axios.put(
 
-//       `http://localhost:5000/api/cart/${item._id}`,
+//       `https://ecommerceweb-xxb1.onrender.com/api/cart/${item._id}`,
 
 //       {
 //         quantity: item.quantity + 1,
@@ -66,7 +66,7 @@
 
 //     await axios.put(
 
-//       `http://localhost:5000/api/cart/${item._id}`,
+//       `https://ecommerceweb-xxb1.onrender.com/api/cart/${item._id}`,
 
 //       {
 //         quantity: item.quantity - 1,
@@ -94,7 +94,7 @@
 
 //     await axios.delete(
 
-//       `http://localhost:5000/api/cart/${id}`,
+//       `https://ecommerceweb-xxb1.onrender.com/api/cart/${id}`,
 
 //       {
 //         withCredentials: true,
@@ -162,7 +162,7 @@
 //               >
 
 //                 <img
-//                   src={`http://localhost:5000/uploads/product-images/${item.product.images[0]}`}
+//                   src={`https://ecommerceweb-xxb1.onrender.com/uploads/product-images/${item.product.images[0]}`}
 //                   alt={item.product.name}
 //                   className="w-full sm:w-36 h-36 rounded-lg object-cover"
 //                 />
@@ -309,7 +309,7 @@ const Cart = () => {
     try {
 
       await axios.put(
-        `http://localhost:5000/api/cart/${item._id}`,
+        `https://ecommerceweb-xxb1.onrender.com/api/cart/${item._id}`,
         {
           quantity: item.quantity + 1,
         },
@@ -334,7 +334,7 @@ const Cart = () => {
     try {
 
       await axios.put(
-        `http://localhost:5000/api/cart/${item._id}`,
+        `https://ecommerceweb-xxb1.onrender.com/api/cart/${item._id}`,
         {
           quantity: item.quantity - 1,
         },
@@ -357,7 +357,7 @@ const Cart = () => {
     try {
 
       await axios.delete(
-        `http://localhost:5000/api/cart/${id}`,
+        `https://ecommerceweb-xxb1.onrender.com/api/cart/${id}`,
         {
           withCredentials: true,
         }
@@ -421,7 +421,7 @@ const Cart = () => {
               >
 
                 <img
-                  src={`http://localhost:5000/uploads/product-images/${item.product.images[0]}`}
+                  src={`https://ecommerceweb-xxb1.onrender.com/uploads/product-images/${item.product.images[0]}`}
                   alt={item.product.name}
                   className="w-full sm:w-36 h-36 object-cover rounded-lg"
                 />

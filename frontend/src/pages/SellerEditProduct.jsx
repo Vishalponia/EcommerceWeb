@@ -33,7 +33,7 @@ const SellerEditProduct = () => {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/categories"
+        "https://ecommerceweb-xxb1.onrender.com/api/categories"
       );
 
       setCategories(
@@ -60,7 +60,7 @@ const SellerEditProduct = () => {
     try {
 
       const res = await axios.get(
-        `http://localhost:5000/api/seller/products/${id}`,
+        `https://ecommerceweb-xxb1.onrender.com/api/seller/products/${id}`,
         {
           withCredentials: true,
         }
@@ -187,7 +187,7 @@ const SellerEditProduct = () => {
 
       const res = await axios.put(
 
-        `http://localhost:5000/api/seller/products/${id}`,
+        `https://ecommerceweb-xxb1.onrender.com/api/seller/products/${id}`,
 
         data,
 

@@ -21,7 +21,7 @@ const SellerProductList = () => {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:5000/api/seller/products",
+        "https://ecommerceweb-xxb1.onrender.com/api/seller/products",
         {
           withCredentials: true,
         }
@@ -71,7 +71,7 @@ const handleDelete = async (id) => {
 
   try {
     const res = await axios.delete(
-      `http://localhost:5000/api/seller/products/${id}`,
+      `https://ecommerceweb-xxb1.onrender.com/api/seller/products/${id}`,
       {
         withCredentials: true,
       }
@@ -212,7 +212,7 @@ const handleDelete = async (id) => {
                   {product.images?.length > 0 ? (
 
                     <img
-                      src={`http://localhost:5000/uploads/product-images/${product.images[0]}`}
+                      src={`https://ecommerceweb-xxb1.onrender.com/uploads/product-images/${product.images[0]}`}
                       alt={product.name}
                       className="w-full h-full object-cover"
                     />

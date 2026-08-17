@@ -25,10 +25,16 @@ import CategoriesPage from "./pages/CategoriesPage.jsx";
 import About from "./pages/About.jsx";
 import Footer from "./components/Footer.jsx";
 import Contact from "./pages/Contact.jsx";
+
+
+
+
+import SellerProtectedRoute from "./components/SellerProtectedRoute";
 import SellerDashboard from "./pages/SellerDashboard";
 import SellerAddProduct from "./pages/SellerAddProduct";
 import SellerProductList from "./pages/SellerProductList";
 import SellerEditProduct from "./pages/SellerEditProduct";
+
 import Shop from "./pages/Shop";
 import TestPayment from "./pages/TestPayment"
 
@@ -63,10 +69,12 @@ function App() {
        <Route path="/checkout" element={ <ProtectedRoute><Checkout/></ProtectedRoute> }/>
        <Route path="/my-orders" element={<ProtectedRoute><MyOrders /></ProtectedRoute> }/>
         <Route path="/admin/orders" element={<AdminRoute><AdminOrderList /></AdminRoute> }/>
-        <Route path="/seller/dashboard" element={<SellerDashboard /> }/>
-        <Route path="/seller/add-product" element={<SellerAddProduct /> }/>
-        <Route path="/seller/products" element={<SellerProductList /> }/>
-        <Route path="/seller/edit-product/:id" element={<SellerEditProduct /> }/>
+
+
+        <Route path="/seller/dashboard" element={<SellerProtectedRoute> <SellerDashboard/> </SellerProtectedRoute> }/>
+        <Route path="/seller/add-product" element={ <SellerProtectedRoute> <SellerAddProduct/> </SellerProtectedRoute> }/>
+        <Route path="/seller/products" element={ <SellerProtectedRoute> <SellerProductList /></SellerProtectedRoute> }/>
+        <Route path="/seller/edit-product/:id" element={ <SellerProtectedRoute> <SellerEditProduct /> </SellerProtectedRoute> }/>
         
 
        <Route path="/categories" element={<CategoriesPage />} />

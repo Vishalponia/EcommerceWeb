@@ -14,7 +14,7 @@
 //   const fetchProducts = async () => {
 //     try {
 //       const res = await axios.get(
-//         "http://localhost:5000/api/products"
+//         "https://ecommerceweb-xxb1.onrender.com/api/products"
 //       );
 
 //       setProducts(res.data.products);
@@ -101,7 +101,7 @@
 //                   <td className="p-3">
 
 //                     <img
-//                       src={`http://localhost:5000/uploads/product-images/${product.images[0]}`}
+//                       src={`https://ecommerceweb-xxb1.onrender.com/uploads/product-images/${product.images[0]}`}
 //                       alt={product.name}
 //                       className="w-20 h-20 object-cover rounded-lg mx-auto"
 //                     />
@@ -201,7 +201,7 @@ const ProductList = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/products");
+      const res = await axios.get("https://ecommerceweb-xxb1.onrender.com/api/products");
       setProducts(res.data.products || []);
     } catch (err) {
       console.log(err);
@@ -236,7 +236,7 @@ const ProductList = () => {
 
   try {
     const res = await axios.delete(
-      `http://localhost:5000/api/products/${id}`,
+      `https://ecommerceweb-xxb1.onrender.com/api/products/${id}`,
       {
         withCredentials: true,
       }
@@ -303,7 +303,7 @@ const ProductList = () => {
                   <tr key={product._id} className="border-t text-center">
                     <td className="p-3">
                       <img
-                        src={`http://localhost:5000/uploads/product-images/${product.images?.[0]}`}
+                        src={`https://ecommerceweb-xxb1.onrender.com/uploads/product-images/${product.images?.[0]}`}
                         alt={product.name}
                         className="w-16 h-16 object-cover rounded mx-auto"
                       />

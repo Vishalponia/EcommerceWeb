@@ -22,7 +22,7 @@ const AddProduct = () => {
   const fetchCategories = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/categories"
+        "https://ecommerceweb-xxb1.onrender.com/api/categories"
       );
 
       setCategories(res.data.categories);
@@ -71,7 +71,7 @@ const AddProduct = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/products",
+        "https://ecommerceweb-xxb1.onrender.com/api/products",
         formData,
         {
           withCredentials: true,

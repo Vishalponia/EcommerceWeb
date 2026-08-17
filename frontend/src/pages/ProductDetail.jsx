@@ -25,7 +25,7 @@ const ProductDetail = () => {
 
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/products/${id}`
+        `https://ecommerceweb-xxb1.onrender.com/api/products/${id}`
       );
 
       setProduct(res.data.product);
@@ -45,7 +45,7 @@ const ProductDetail = () => {
   const fetchRelatedProducts = async (categoryId) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/products/category/${categoryId}`
+        `https://ecommerceweb-xxb1.onrender.com/api/products/category/${categoryId}`
       );
 
       const filteredProducts = res.data.products.filter(
@@ -80,7 +80,7 @@ const handleAddToCart = async () => {
   try {
 
     const res = await axios.post(
-      "http://localhost:5000/api/cart",
+      "https://ecommerceweb-xxb1.onrender.com/api/cart",
       {
         productId: product._id,
         quantity,
@@ -161,7 +161,7 @@ const handleAddToCart = async () => {
         {/* Product Image */}
         <div>
           <img
-            src={`http://localhost:5000/uploads/product-images/${product.images[0]}`}
+            src={`https://ecommerceweb-xxb1.onrender.com/uploads/product-images/${product.images[0]}`}
             alt={product.name}
             className="w-full h-[500px] object-fit rounded-xl shadow-lg"
           />
@@ -305,7 +305,7 @@ const handleAddToCart = async () => {
               >
 
                 <img
-                  src={`http://localhost:5000/uploads/product-images/${item.images[0]}`}
+                  src={`https://ecommerceweb-xxb1.onrender.com/uploads/product-images/${item.images[0]}`}
                   alt={item.name}
                   className="w-full h-56 object-cover"
                 />

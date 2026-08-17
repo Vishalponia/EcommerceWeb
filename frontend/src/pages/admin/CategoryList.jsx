@@ -17,7 +17,7 @@ const CategoryList = () => {
   const getCategories = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/categories",
+        "https://ecommerceweb-xxb1.onrender.com/api/categories",
         {
           withCredentials: true,
         }
@@ -52,7 +52,7 @@ const CategoryList = () => {
   try {
 
     const res = await axios.delete(
-      `http://localhost:5000/api/categories/${id}`,
+      `https://ecommerceweb-xxb1.onrender.com/api/categories/${id}`,
       {
         withCredentials: true,
       }
@@ -142,7 +142,7 @@ const CategoryList = () => {
                     <td className="py-4">
 
                       <img
-                        src={`http://localhost:5000/uploads/category-images/${category.image}`}
+                        src={`https://ecommerceweb-xxb1.onrender.com/uploads/category-images/${category.image}`}
                         alt={category.name}
                         className="w-20 h-20 rounded-lg object-cover mx-auto"
                       />

@@ -17,7 +17,7 @@ const CategorySection = () => {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/categories"
+        "https://ecommerceweb-xxb1.onrender.com/api/categories"
       );
 
       setCategories(res.data.categories);
@@ -47,7 +47,7 @@ const CategorySection = () => {
     >
       <div className="overflow-hidden">
         <img
-          src={`http://localhost:5000/uploads/category-images/${category.image}`}
+          src={`https://ecommerceweb-xxb1.onrender.com/uploads/category-images/${category.image}`}
           alt={category.name}
           className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
         />

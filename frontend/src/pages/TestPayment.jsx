@@ -12,7 +12,7 @@ const TestPayment = () => {
       // ==========================================
 
       const res = await axios.post(
-        "http://localhost:5000/api/payment/create-order",
+        "https://ecommerceweb-xxb1.onrender.com/api/payment/create-order",
         {
           amount: 500,
         }
