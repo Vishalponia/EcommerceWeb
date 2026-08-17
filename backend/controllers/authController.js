@@ -112,6 +112,7 @@ const login = async (req, res) => {
       httpOnly: true,
       secure: true, // true in production with HTTPS
       sameSite: "none",
+      path: "/",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -148,6 +149,7 @@ const logout = async (req, res) => {
     res.clearCookie("token", {
       httpOnly: true,
       secure: true, // true in production (HTTPS)
+      path: "/",
       sameSite: "none",
     });
 
