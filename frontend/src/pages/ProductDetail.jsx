@@ -25,7 +25,10 @@ const ProductDetail = () => {
 
     try {
       const res = await axios.get(
-        `https://ecommerceweb-xxb1.onrender.com/api/products/${id}`
+        `https://ecommerceweb-xxb1.onrender.com/api/products/${id}`,
+        {
+        withCredentials: true,
+      }
       );
 
       setProduct(res.data.product);
